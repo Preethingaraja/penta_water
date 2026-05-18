@@ -1,0 +1,1350 @@
+<!DOCTYPE html>
+<html lang="en" style="scroll-behavior: smooth;">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Penta Water Technologies - Pure Water. Pure Possibilities. Delivering premium water solutions through our Auro and Industrial lines.">
+    <title>Penta Water Technologies | Pure Water</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:opsz,wght@9..40,400;9..40,500;9..40,700&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        :root {
+            --bg-dark: #FFFFFF;
+            --bg-mid: #F8FAFC;
+            --bg-light: #F1F5F9;
+            --accent: #0066CC;
+            --accent-glow: rgba(0, 102, 204, 0.2);
+            --highlight: #F59E0B;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
+            --border: rgba(0, 102, 204, 0.15);
+            --font-heading: 'DM Sans', sans-serif;
+            --font-body: 'DM Sans', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: var(--font-body);
+            background-color: var(--bg-dark);
+            color: var(--text-primary);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, h4, h5, h6 {
+            font-family: var(--font-heading);
+            font-weight: 600;
+            line-height: 1.2;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Utility */
+        .text-accent {
+            color: var(--accent);
+        }
+
+        .fade-in-element {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+
+        .fade-in-element.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2rem;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: var(--transition);
+            text-align: center;
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: #FFFFFF;
+            border: 2px solid var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+        }
+
+        .btn-primary:hover {
+            box-shadow: 0 0 25px var(--accent-glow), 0 0 10px var(--accent) inset;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: var(--text-primary);
+            border: 2px solid var(--border);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent);
+            box-shadow: 0 0 15px var(--accent-glow);
+            transform: translateY(-2px);
+        }
+
+        /* Navbar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            padding: 1.5rem 2rem;
+            transition: var(--transition);
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.8);
+            box-shadow: 0 4px 30px rgba(0, 102, 204, 0.05);
+        }
+
+        nav.scrolled {
+            padding: 1rem 2rem;
+            background: rgba(255, 255, 255, 0.98);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.1);
+            border-color: var(--border);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 100%;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            letter-spacing: 0.5px;
+        }
+
+        .logo img {
+            height: 36px;
+            width: auto;
+            border-radius: 8px;
+            object-fit: contain;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--text-primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            cursor: pointer;
+        }
+
+        .hamburger span {
+            display: block;
+            width: 25px;
+            height: 2px;
+            background-color: var(--text-primary);
+            transition: var(--transition);
+        }
+
+        /* Hero Section */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            overflow: hidden;
+            padding: 120px 1rem 4rem;
+            background-color: var(--bg-light);
+        }
+
+        .hero-container {
+            width: 100%;
+            max-width: 1400px;
+            margin: 0 auto;
+            background: #FFFFFF;
+            border-radius: 40px;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.05);
+            display: flex;
+            flex-direction: column;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        @media (min-width: 992px) {
+            .hero-container {
+                flex-direction: row;
+                min-height: 80vh;
+            }
+        }
+
+        .hero-content {
+            flex: 1;
+            padding: 4rem 2rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            z-index: 1;
+        }
+
+        @media (min-width: 992px) {
+            .hero-content {
+                padding: 6rem 5rem;
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(3rem, 5vw, 4.5rem);
+            margin-bottom: 1.5rem;
+            letter-spacing: -1px;
+            color: var(--text-primary);
+        }
+
+        .hero h1 span {
+            display: block;
+            opacity: 0;
+            transform: translateY(20px);
+            animation: textFadeIn 1s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+        }
+
+        .hero h1 span:nth-child(2) {
+            animation-delay: 0.3s;
+            color: var(--accent);
+        }
+
+        @keyframes textFadeIn {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero p {
+            font-size: clamp(1.1rem, 1.5vw, 1.25rem);
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            max-width: 500px;
+            opacity: 0;
+            animation: textFadeIn 1s ease 0.6s forwards;
+            line-height: 1.7;
+        }
+
+        .hero-btns {
+            display: flex;
+            gap: 1.5rem;
+            opacity: 0;
+            animation: textFadeIn 1s ease 0.9s forwards;
+        }
+        
+        .hero-visual {
+            flex: 1;
+            position: relative;
+            background: radial-gradient(circle at center, rgba(0, 102, 204, 0.05) 0%, transparent 70%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 400px;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 0;
+            opacity: 0;
+            animation: imageFadeIn 1.5s ease 0.5s forwards;
+        }
+        
+        @keyframes imageFadeIn {
+            to { opacity: 1; }
+        }
+
+        /* Section Global */
+        section {
+            padding: clamp(4rem, 8vw, 8rem) 0;
+        }
+
+        .section-header {
+            margin-bottom: clamp(2.5rem, 5vw, 4rem);
+            text-align: center;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            display: inline-block;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, transparent, var(--highlight), transparent);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about {
+            background-color: var(--bg-mid);
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .about-content p {
+            color: var(--text-secondary);
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+
+        .about-stats {
+            background: rgba(255, 255, 255, 0.8);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            padding: clamp(2rem, 4vw, 3rem);
+            backdrop-filter: blur(10px);
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .about-stats::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle at center, var(--accent-glow) 0%, transparent 70%);
+            opacity: 0.1;
+            pointer-events: none;
+        }
+
+        .stat-item {
+            display: flex;
+            align-items: center;
+            gap: 1.5rem;
+        }
+
+        .stat-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: rgba(0, 102, 204, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid var(--border);
+            color: var(--accent);
+        }
+
+        .stat-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 2px;
+        }
+
+        .stat-text h3 {
+            font-size: clamp(1.4rem, 2.5vw, 1.8rem);
+            color: var(--highlight);
+            margin-bottom: 0.2rem;
+            font-family: var(--font-body);
+        }
+
+        .stat-text p {
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .core-values-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 5rem;
+        }
+
+        .core-value-card {
+            background: rgba(255, 255, 255, 0.6);
+            backdrop-filter: blur(20px);
+            border: 1px solid var(--border);
+            border-radius: 24px;
+            padding: 2.5rem 2rem;
+            text-align: center;
+            transition: var(--transition);
+            box-shadow: 0 10px 30px rgba(0, 102, 204, 0.05);
+        }
+
+        .core-value-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 20px 40px rgba(0, 102, 204, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .core-value-icon {
+            width: 64px;
+            height: 64px;
+            margin: 0 auto 1.5rem;
+            background: var(--bg-light);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+        
+        .core-value-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 2px;
+        }
+
+        .core-value-card:hover .core-value-icon {
+            background: var(--accent);
+            color: #FFFFFF;
+            transform: scale(1.1);
+        }
+
+        .core-value-card h4 {
+            font-size: 1.4rem;
+            color: var(--text-primary);
+            margin-bottom: 1rem;
+        }
+
+        .core-value-card p {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+        }
+
+        /* Services Section */
+        .services {
+            background-color: var(--bg-dark);
+            padding-top: 4rem;
+        }
+
+        .services-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 6rem;
+        }
+
+        .service-card {
+            border-radius: 32px;
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+            min-height: 750px;
+            box-shadow: 0 20px 50px rgba(0, 102, 204, 0.08);
+            border: 1px solid var(--border);
+        }
+        
+        @media (max-width: 768px) {
+            .service-card {
+                min-height: 850px;
+            }
+        }
+
+        .service-image-wrapper {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 0;
+        }
+
+        .service-image-wrapper img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+
+        .service-card:hover .service-image-wrapper img {
+            transform: scale(1.05);
+        }
+
+        .service-content-wrapper {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            width: calc(100% - 4rem);
+            max-width: 550px;
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 24px;
+            padding: 3.5rem;
+            z-index: 1;
+            transform: translateY(0);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.05);
+        }
+        
+        @media (min-width: 992px) {
+            .service-content-wrapper {
+                bottom: 3rem;
+                left: 3rem;
+            }
+            .service-card.reverse .service-content-wrapper {
+                left: auto;
+                right: 3rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .service-content-wrapper {
+                bottom: 1rem;
+                left: 1rem;
+                width: calc(100% - 2rem);
+                padding: 2rem;
+            }
+        }
+
+        .service-card:hover .service-content-wrapper {
+            transform: translateY(-10px);
+            box-shadow: 0 25px 45px rgba(0, 102, 204, 0.1);
+        }
+
+        .service-icon {
+            width: 60px;
+            height: 60px;
+            background: rgba(0, 102, 204, 0.08);
+            border: 1px solid var(--border);
+            border-radius: 18px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 2rem;
+            color: var(--accent);
+            transition: var(--transition);
+        }
+
+        .service-icon svg {
+            width: 28px;
+            height: 28px;
+            stroke-width: 2px;
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--accent);
+            color: #FFFFFF;
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .service-card h3 {
+            font-size: clamp(1.8rem, 3.5vw, 2.5rem);
+            margin-bottom: 1rem;
+            color: var(--text-primary);
+            line-height: 1.2;
+        }
+
+        .service-card p {
+            color: var(--text-secondary);
+            margin-bottom: 2.5rem;
+            font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+        }
+
+        .service-features {
+            border-top: 1px solid var(--border);
+            padding-top: 2rem;
+        }
+
+        .service-features li {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            color: var(--text-primary);
+            font-weight: 600;
+        }
+
+        .service-features li svg {
+            width: 20px;
+            height: 20px;
+            color: var(--accent);
+            flex-shrink: 0;
+            background: rgba(0, 102, 204, 0.1);
+            border-radius: 50%;
+            padding: 3px;
+        }
+
+        /* Contact Section */
+        .contact {
+            background-color: var(--bg-mid);
+            position: relative;
+        }
+
+        .contact::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--border), transparent);
+        }
+
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1.5fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            padding-right: 2rem;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .contact-item-icon {
+            width: 50px;
+            height: 50px;
+            background: rgba(0, 102, 204, 0.05);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--accent);
+            border: 1px solid var(--border);
+            flex-shrink: 0;
+        }
+
+        .contact-item-icon svg {
+            width: 24px;
+            height: 24px;
+            color: var(--accent);
+            stroke-width: 2px;
+        }
+
+        .contact-item-details h4 {
+            font-family: var(--font-body);
+            font-size: 1.1rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+
+        .contact-item-details p {
+            color: var(--text-secondary);
+        }
+
+        .contact-form {
+            background: var(--bg-dark);
+            padding: 3rem;
+            border-radius: 24px;
+            border: 1px solid var(--border);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.05);
+        }
+
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-control {
+            width: 100%;
+            background: var(--bg-mid);
+            border: 1px solid var(--border);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 1rem;
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            background: #FFFFFF;
+            box-shadow: 0 0 15px rgba(0, 102, 204, 0.1);
+        }
+
+        .form-control::placeholder {
+            color: rgba(168, 184, 204, 0.5);
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 150px;
+        }
+
+        .contact-form .btn {
+            width: fit-content;
+            margin-top: 1rem;
+            border-radius: 12px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #F1F5F9;
+            padding: 5rem 0 2rem;
+            border-top: 1px solid var(--border);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 3rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-brand .logo {
+            margin-bottom: 1rem;
+        }
+
+        .footer-brand p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            max-width: 300px;
+        }
+
+        .footer-title {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            font-family: var(--font-body);
+        }
+
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+
+        .footer-links a {
+            color: var(--text-secondary);
+            transition: var(--transition);
+        }
+
+        .footer-links a:hover {
+            color: var(--accent);
+            padding-left: 5px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-links a {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: #FFFFFF;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-secondary);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+        }
+
+        .social-links a:hover {
+            background: rgba(0, 102, 204, 0.1);
+            color: var(--accent);
+            border-color: var(--accent);
+            transform: translateY(-3px);
+        }
+
+        .social-links svg {
+            width: 20px;
+            height: 20px;
+            stroke: currentColor;
+            stroke-width: 2px;
+            fill: none;
+        }
+
+        .footer-bottom {
+            text-align: center;
+            padding-top: 2rem;
+            border-top: 1px solid var(--border);
+            color: var(--text-secondary);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive */
+        @media (max-width: 992px) {
+            .about-grid, .services-grid, .contact-grid {
+                grid-template-columns: 1fr;
+            }
+            .contact-info {
+                padding-right: 0;
+            }
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                top: 0;
+                width: 100%;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                width: 75%;
+                height: 100vh;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                justify-content: center;
+                transition: 0.5s ease;
+                z-index: -1;
+                box-shadow: -10px 0 30px rgba(0, 102, 204, 0.1);
+            }
+
+            .nav-links.active {
+                right: 0;
+            }
+
+            .hamburger {
+                display: flex;
+                z-index: 2;
+            }
+
+            .hamburger.active span:nth-child(1) {
+                transform: translateY(7px) rotate(45deg);
+            }
+
+            .hamburger.active span:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active span:nth-child(3) {
+                transform: translateY(-7px) rotate(-45deg);
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero-btns {
+                flex-direction: column;
+                width: 100%;
+            }
+
+            .hero-btns .btn {
+                width: 100%;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+            
+            .floating-drop {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav id="navbar">
+        <div class="nav-container">
+            <a href="#" class="logo">
+                <img src="assets/penta_logo.png" alt="Penta Water Technologies Logo">
+                Penta Water Technologies
+            </a>
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#home" class="nav-item">Home</a></li>
+                <li><a href="#about" class="nav-item">About</a></li>
+                <li><a href="#services" class="nav-item">Services</a></li>
+                <li><a href="#contact" class="nav-item">Contact</a></li>
+            </ul>
+            <div class="hamburger" id="hamburger">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <h1>
+                    <span>Pure Water.</span>
+                    <span>Pure Possibilities.</span>
+                </h1>
+                <p>Delivering premium water solutions through our Auro and Industrial lines - trusted, tested, and technology-driven.</p>
+                <div class="hero-btns">
+                    <a href="#services" class="btn btn-primary">Explore Auro</a>
+                    <a href="#services" class="btn btn-outline">Water Solutions</a>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <img src="assets/hero_light_drop.png" alt="Premium Water Graphic" class="hero-image">
+            </div>
+        </div>
+    </header>
+
+    <!-- About Section -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="section-header fade-in-element">
+                <h2>Who We Are</h2>
+            </div>
+            <div class="about-grid">
+                <div class="about-content fade-in-element">
+                    <p>At Penta Water Technologies, we believe that access to pure, high-quality water is a fundamental right and a crucial driver for industry and health. With a commitment to cutting-edge purification technology, we deliver solutions that exceed the highest standards.</p>
+                    <p>Our dual approach ensures that whether you're seeking the finest drinking water for your home through our Auro line, or robust, large-scale bulk water treatment for your industrial needs, we provide unmatched purity and reliability.</p>
+                </div>
+                <div class="about-stats fade-in-element" style="transition-delay: 0.2s;">
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i data-lucide="award"></i>
+                        </div>
+                        <div class="stat-text">
+                            <h3>10+ Years</h3>
+                            <p>Excellence</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i data-lucide="users"></i>
+                        </div>
+                        <div class="stat-text">
+                            <h3>500+</h3>
+                            <p>Clients Served</p>
+                        </div>
+                    </div>
+                    <div class="stat-item">
+                        <div class="stat-icon">
+                            <i data-lucide="shield-check"></i>
+                        </div>
+                        <div class="stat-text">
+                            <h3>ISO Certified</h3>
+                            <p>Quality Assured</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Core Values -->
+            <div class="core-values-grid">
+                <div class="core-value-card fade-in-element">
+                    <div class="core-value-icon">
+                        <i data-lucide="droplet"></i>
+                    </div>
+                    <h4>Purity Guaranteed</h4>
+                    <p>Every drop goes through rigorous multi-stage filtration to ensure uncompromised safety and mineral balance.</p>
+                </div>
+                <div class="core-value-card fade-in-element" style="transition-delay: 0.1s;">
+                    <div class="core-value-icon">
+                        <i data-lucide="leaf"></i>
+                    </div>
+                    <h4>Sustainable Practices</h4>
+                    <p>We are committed to eco-friendly packaging and energy-efficient treatment plants to protect our environment.</p>
+                </div>
+                <div class="core-value-card fade-in-element" style="transition-delay: 0.2s;">
+                    <div class="core-value-icon">
+                        <i data-lucide="settings"></i>
+                    </div>
+                    <h4>Advanced Technology</h4>
+                    <p>Utilizing the latest in RO and UV purification technologies to deliver unmatched quality at any scale.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="services">
+        <div class="container">
+            <div class="section-header fade-in-element">
+                <h2>Our Products & Services</h2>
+            </div>
+            <div class="services-grid">
+                <!-- Auro Card -->
+                <div class="service-card fade-in-element">
+                    <div class="service-image-wrapper">
+                        <img src="assets/auro_bottle.png" alt="Auro Premium Water Bottle">
+                    </div>
+                    <div class="service-content-wrapper">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12 2.69l5.66 5.66a8 8 0 1 1-11.31 0zM12 5.52L8.1 9.41a5.5 5.5 0 1 0 7.8 0L12 5.52z"/></svg>
+                        </div>
+                        <h3>Auro - Premium Drinking Water</h3>
+                        <p>Purified, mineral-balanced water for homes, offices, and retail. Available in premium bottles and dispensers. Experience hydration as nature intended, refined by technology.</p>
+                        <ul class="service-features">
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                RO + UV Purified
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                BPA-Free Packaging
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                Home Delivery
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                Custom Branding
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Industrial Water Card -->
+                <div class="service-card reverse fade-in-element" style="transition-delay: 0.2s;">
+                    <div class="service-image-wrapper">
+                        <img src="assets/industrial_tank.png" alt="Industrial Water Solutions">
+                    </div>
+                    <div class="service-content-wrapper">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24"><path d="M22 10.99C22 16.51 17.51 21 12 21S2 16.51 2 10.99c0-2.61 1-5.07 2.83-6.9L12 2.27l7.17 7.17c1.83 1.83 2.83 4.29 2.83 6.9zM12 5.1L6.24 10.86A6.98 6.98 0 0 0 4 10.99C4 15.41 7.59 19 12 19s8-3.59 8-8.01a6.98 6.98 0 0 0-2.24-5.13L12 5.1z"/><path d="M6 14h12v2H6z"/></svg>
+                        </div>
+                        <h3>Water - Industrial Solutions</h3>
+                        <p>Bulk water supply and advanced treatment solutions tailored for industries, construction sites, and commercial units. Reliable supply chain meeting your operational demands.</p>
+                        <ul class="service-features">
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                Bulk Tanker Supply
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                Water Treatment Plants
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                Industrial RO Systems
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                Municipal Projects
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Commercial Filtration Card -->
+                <div class="service-card fade-in-element">
+                    <div class="service-image-wrapper">
+                        <img src="assets/filtration_system.png" alt="Commercial Filtration Systems">
+                    </div>
+                    <div class="service-content-wrapper">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+                        </div>
+                        <h3>Commercial Filtration</h3>
+                        <p>High-capacity purification systems designed for offices, restaurants, and hospitality. Ensure crystal clear, great-tasting water for your staff and customers with minimal maintenance.</p>
+                        <ul class="service-features">
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                High-Capacity RO
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                Under-Sink Systems
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                Annual Maintenance
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                Smart Monitoring
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Water Quality Testing Card -->
+                <div class="service-card reverse fade-in-element" style="transition-delay: 0.2s;">
+                    <div class="service-image-wrapper">
+                        <img src="assets/water_testing.png" alt="Water Quality Testing">
+                    </div>
+                    <div class="service-content-wrapper">
+                        <div class="service-icon">
+                            <svg viewBox="0 0 24 24"><path d="M12.98 5c.42.06.77.36.9.76L16.27 14h-8.54l2.39-8.24c.13-.4.48-.7.9-.76zM13 2c-1.39 0-2.58.91-2.92 2.22L6.37 17.03C6.11 17.9 6.58 18.82 7.42 19.16l8.83 2.56c.86.25 1.79-.24 2.05-1.11l3.71-12.81c.34-1.31-.57-2.61-1.93-2.61L13 2z"/></svg>
+                        </div>
+                        <h3>Water Quality Testing</h3>
+                        <p>Comprehensive laboratory analysis for residential and commercial clients. We test for TDS, pH, minerals, and contaminants to ensure your water meets the highest safety standards.</p>
+                        <ul class="service-features">
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                Lab-Grade Analysis
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                TDS & pH Balancing
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                Contaminant Screening
+                            </li>
+                            <li>
+                                <i data-lucide="check-circle-2"></i>
+                                Purity Certification
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="section-header fade-in-element">
+                <h2>Get in Touch</h2>
+            </div>
+            <div class="contact-grid">
+                <div class="contact-info fade-in-element">
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div class="contact-item-details">
+                            <h4>Address</h4>
+                            <p>123 Aqua Innovation Park,<br>Puducherry, India 605001</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i data-lucide="phone"></i>
+                        </div>
+                        <div class="contact-item-details">
+                            <h4>Phone</h4>
+                            <p>+91 96008 75593</p>
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-item-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="contact-item-details">
+                            <h4>Email</h4>
+                            <p>info@pentawater.com</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form fade-in-element" style="transition-delay: 0.2s;">
+                    <form onsubmit="sendWhatsApp(event)">
+                        <div class="form-group">
+                            <input type="text" id="waName" class="form-control" placeholder="Your Name" required aria-label="Your Name">
+                        </div>
+                        <div class="form-group">
+                            <input type="email" id="waEmail" class="form-control" placeholder="Your Email" required aria-label="Your Email">
+                        </div>
+                        <div class="form-group">
+                            <textarea id="waMessage" class="form-control" placeholder="How can we help you?" required aria-label="Message"></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Send via WhatsApp</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">
+                        <img src="assets/penta_logo.png" alt="Penta Water Technologies Logo">
+                        Penta Water Technologies
+                    </a>
+                    <p>Penta Water Technologies - Pure. Trusted. Delivered. Redefining hydration and industrial water management.</p>
+                </div>
+                <div>
+                    <h4 class="footer-title">Quick Links</h4>
+                    <ul class="footer-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#services">Services</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Our Products</h4>
+                    <ul class="footer-links">
+                        <li><a href="#services">Auro Premium</a></li>
+                        <li><a href="#services">Bulk Tankers</a></li>
+                        <li><a href="#services">Treatment Plants</a></li>
+                        <li><a href="#services">Custom Bottling</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="footer-title">Connect</h4>
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                        </a>
+                        <a href="#" aria-label="Instagram">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                        </a>
+                        <a href="#" aria-label="LinkedIn">
+                            <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path><rect x="2" y="9" width="4" height="12"></rect><circle cx="4" cy="4" r="2"></circle></svg>
+                        </a>
+                        <a href="#" aria-label="WhatsApp">
+                            <i data-lucide="message-circle"></i>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Penta Water Technologies. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navbar Scroll Effect
+        const navbar = document.getElementById('navbar');
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile Menu Toggle
+        const hamburger = document.getElementById('hamburger');
+        const navLinks = document.getElementById('navLinks');
+        const navItems = document.querySelectorAll('.nav-item');
+
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+
+        navItems.forEach(item => {
+            item.addEventListener('click', () => {
+                hamburger.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+
+        // Intersection Observer for Scroll Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); // Stop observing once visible
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-element').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // WhatsApp Form Submission
+        function sendWhatsApp(event) {
+            event.preventDefault();
+            const name = document.getElementById('waName').value;
+            const email = document.getElementById('waEmail').value;
+            const message = document.getElementById('waMessage').value;
+            
+            const text = `*New Website Enquiry*%0A%0A*Name:* ${name}%0A*Email:* ${email}%0A*Message:* ${message}`;
+            // Remove + or spaces for the wa.me link
+            const whatsappUrl = `https://wa.me/919600875593?text=${text}`;
+            
+            window.open(whatsappUrl, '_blank');
+        }
+    </script>
+</body>
+</html>
